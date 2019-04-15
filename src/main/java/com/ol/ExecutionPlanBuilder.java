@@ -16,11 +16,13 @@ public class ExecutionPlanBuilder {
         Set<Node> allNodes = new HashSet<>();
         Graph<Node, DefaultWeightedEdge> graph = buildWeightedGraph(scripts, allNodes);
         List<Integer> executionPlan = new ArrayList<>();
+
         if (allNodes.isEmpty() || allNodes.size() == 1) {
             //simple case - script doesn't have any dependencies
             allNodes.forEach(node -> executionPlan.add(node.getScriptId()));
             return executionPlan;
         }
+
         //usage Bellman-Ford algorithm for working with negative edges-weights
         BellmanFordShortestPath path = new BellmanFordShortestPath(graph);
         for (Node root : getRootNodes(graph, allNodes)) {
@@ -65,7 +67,7 @@ public class ExecutionPlanBuilder {
     }
 
     /**
-     *
+     * Returns list of root-nodes, root-node has in-degree == 0
      * @param graph
      * @param allNodes
      * @return list of nodes, which have in-degree == 0
