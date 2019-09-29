@@ -1,7 +1,7 @@
-package com.ol;
+package com.ol.scripts.exercise;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.ol.scripts.exercise.model.VulnerabilityScript;
+import lombok.extern.slf4j.Slf4j;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -11,11 +11,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.util.Lists.newArrayList;
 
 /**
- * Created by Semernitskaya on 13.04.2019.
+ * Created by Semernitskaya on 9/29/19.
  */
+@Slf4j
 public class ExecutionPlanBuilderTest {
-
-    final Logger logger = LoggerFactory.getLogger(ExecutionPlanBuilderTest.class);
 
     private ExecutionPlanBuilder organizer = new ExecutionPlanBuilder();
 
@@ -53,10 +52,10 @@ public class ExecutionPlanBuilderTest {
     }
 
     @Test(dataProvider = "getTestData")
-    public void testIsAnagram(List<VulnerabilityScript> scripts,
-                              Integer[][][] expectedExecutionPlanBlocksList) {
+    public void testExecutionPlan(List<VulnerabilityScript> scripts,
+                                  Integer[][][] expectedExecutionPlanBlocksList) {
         List<Integer> actualExecutionPlan = organizer.buildExecutionPlan(scripts);
-        logger.info("Expected execution plan {}, actual execution plan {}",
+        log.info("Expected execution plan {}, actual execution plan {}",
                 expectedExecutionPlanBlocksList,
                 actualExecutionPlan);
         for (Integer[][] expectedExecutionPlanBlocks : expectedExecutionPlanBlocksList) {

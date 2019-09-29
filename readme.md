@@ -1,4 +1,10 @@
-## Building execution plan for scripts with dependencies
+## Building execution plan for scripts with dependencies    
+###Task:
+Let's say I have a database of scripts. Each script has an arbitrary 
+number of dependencies. The dependencies are expressed as a list of 
+scripts IDs that need to be executed before a given script. There are no 
+circular dependencies. I want to come up with an execution plan so 
+that I can run all of the scripts in an appropriate order. 
 
 Build using following command:  
 ```bash
