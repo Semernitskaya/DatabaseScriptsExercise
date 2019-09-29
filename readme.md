@@ -1,5 +1,5 @@
 ## Building execution plan for scripts with dependencies    
-###Task:
+### Task:  
 Let's say I have a database of scripts. Each script has an arbitrary 
 number of dependencies. The dependencies are expressed as a list of 
 scripts IDs that need to be executed before a given script. There are no 
